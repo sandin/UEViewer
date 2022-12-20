@@ -26,7 +26,7 @@
 char GRootDirectory[MAX_PACKAGE_PATH];
 
 
-#define UE4_PACKAGE_EXTENSIONS	"uasset", "umap",
+#define UE4_PACKAGE_EXTENSIONS	"uasset", "umap", "upipelinecache"
 
 static const char *PackageExtensions[] =
 {
@@ -1370,6 +1370,9 @@ void appEnumGameFilesWorker(EnumGameFilesCallback_t Callback, const char *Ext, v
 	guard(appEnumGameFilesWorker);
 	for (const CGameFileInfo *info : GameFiles)
 	{
+		if (strcmp(*info->GetPath(), "/Game/PipelineCaches/Android") == 0) {
+			appPrintf("appEnumGameFilesWorker info=%s IsPackage=%d, Ext=%s\n", *info->GetPath(), info->IsPackage(), info->GetExtension());
+		}
 		if (!Ext)
 		{
 			// enumerate packages
