@@ -191,6 +191,7 @@ void SavePackages(const TArray<const CGameFileInfo*>& Packages, IProgressCallbac
 					file->GetCleanName(Name);
 					appSprintf(ARRAY_ARG(OutFile), "%s/%s", *GSettings.SavePackages.SavePath, *Name);
 				}
+				appPrintf("SavePackages, outFile=%s\n", OutFile);
 				appMakeDirectoryForFile(OutFile);
 				FILE *out = fopen(OutFile, "wb");
 				// copy data

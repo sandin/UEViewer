@@ -892,6 +892,7 @@ int main(int argc, const char **argv)
 		else if (!strnicmp(opt, "out=", 4))
 		{
 			GSettings.Export.SetPath(opt+4);
+			GSettings.SavePackages.SetPath(opt+4);
 		}
 		else if (!strnicmp(opt, "game=", 5))
 		{
@@ -1163,6 +1164,7 @@ int main(int argc, const char **argv)
 
 	if (mainCmd == CMD_Save)
 	{
+		appPrintf("\nCMD_SAVE, GameFiles=%d\n", GameFiles.Num());
 		SavePackages(GameFiles);
 		return 0;
 	}
